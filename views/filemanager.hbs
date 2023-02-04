@@ -5,11 +5,46 @@
 
     <div id="mainAndAsideWrapper">
         <aside>
+                <button class="button" id="newDirectory">nowy katalog</button>
+                <button class="button" id="newFile">nowy plik</button>
+                 <form enctype="multipart/form-data" method="POST" action="/handleUpload">
+                        <div class="upload" style="text-align: center;">
+                                <span style="color:white">wybierz plik</span>
+                                <input type="file" multiple required name="fileInput" id="fileInput">
+                        </div>
+                        <button id="fileUploadButton" type="submit"></button>
 
+                </form>
+                        <dialog id="folderDialog">
+                                <input id="newDirectoryInput" type="text">
+                                <button id="folderDialogOk">OK</button>
+                                <button id="folderDialogCancel">Cancel</button>
+                        </dialog>
+                        <dialog id="fileDialog">
+                                <input id="newFileInput" type="text">
+                                <button id="fileDialogOk">OK</button>
+                                <button id="fileDialogCancel">Cancel</button>
+                        </dialog>
         </aside>
 
         <main>
-
+                <div class="addressLine">
+                        {{#each address}}
+                                {{>jedenAdres}}
+                        {{/each}}
+                </div>
+                        <h2>Folders</h2>
+                <div class="folderArea">
+                        {{#each folders}}
+                                {{> jedenFolder}}
+                        {{/each}}
+                </div>
+                        <h2>Files</h2>
+                <div class="fileArea">
+                        {{#each files}}
+                                {{> jedenPlik}}
+                        {{/each}}
+                </div>
         </main>
     </div>
 </div>
